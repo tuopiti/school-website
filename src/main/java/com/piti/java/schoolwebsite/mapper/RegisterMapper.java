@@ -21,13 +21,15 @@ import com.piti.java.schoolwebsite.service.UserService;
 public interface RegisterMapper {
 	
 	@Mapping(target = "user", source = "dto.userId")
-	@Mapping(target = "promotion", source = "dto.promotionId")
+	//@Mapping(target = "promotion", source = "dto.promotionId")
 	Register toRegister(RegisterDTO dto);
 	
 	@Mapping(source = "user.id", target = "userId")
     @Mapping(source = "promotion.id", target = "promotionId")
 	@Mapping(target = "courses", source = "registerDetails", qualifiedByName = "mapCourses")
 	@Mapping(target = "payments", source = "payments", qualifiedByName = "mapPayments")
+	@Mapping(target = "extraCourseIds", ignore = true)
+	@Mapping(target = "courseIds", ignore = true)
 	RegisterDTO toDTO(Register register);
 	
 	@Mapping(target = "register", source = "register")

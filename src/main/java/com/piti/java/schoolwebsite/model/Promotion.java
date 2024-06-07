@@ -37,9 +37,10 @@ public class Promotion {
 	private BigDecimal discountPercentage;
 	private BigDecimal discountAmount;
 	private Integer extraCourses;
+	private Integer payOnlyNumberCourses;
 	private LocalDate startDate;
 	private LocalDate endDate;
 	
 	@Enumerated(EnumType.STRING)
-	private PromotionType promotionType; // New field to indicate the type of promotion
+	private PromotionType promotionType;
 }

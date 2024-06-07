@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.piti.java.schoolwebsite.enums.PaymentStatus;
+import com.piti.java.schoolwebsite.enums.PromotionType;
 
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -14,10 +15,12 @@ import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterDTO {
@@ -40,12 +43,16 @@ public class RegisterDTO {
     
     private BigDecimal initialPayment;
     private String paymentMethod;
+    @Enumerated(EnumType.STRING)
+    private PromotionType promotionType;
 	
-	@NotNull(message = "Register date cannot be null")
+	//@NotNull(message = "Register date cannot be null")
     //@FutureOrPresent(message = "Register date cannot be in the past")
 	private LocalDateTime registerDate;
 	
 	private List<PaymentDTO> payments;
+	
+	private List<Long> extraCourseIds;
 	
 	public List<Long> getCourseIds() {
         return courses.stream()

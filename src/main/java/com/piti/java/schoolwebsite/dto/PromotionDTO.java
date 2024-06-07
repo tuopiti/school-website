@@ -54,6 +54,9 @@ public class PromotionDTO {
     //@NotNull(message = "Extra courses is mandatory")
     @Min(value = 0, message = "Extra courses must be greater than or equal to 0")
     private Integer extraCourses;
+    
+    @Min(value = 0, message = "Pay only number of courses must be greater than or equal to 0")
+    private Integer payOnlyNumberCourses;
 
     @NotNull(message = "Start date is mandatory")
     @FutureOrPresent(message = "Start date must be in the present or future")
@@ -65,6 +68,6 @@ public class PromotionDTO {
     
     @NotNull(message = "Promotion Type is mandatory")
     @Enumerated(EnumType.STRING)
-    private PromotionType promotionType; // New field to indicate the type of promotion
+    private PromotionType promotionType; 
 
 }
