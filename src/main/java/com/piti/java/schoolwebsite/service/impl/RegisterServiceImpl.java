@@ -140,7 +140,7 @@ public class RegisterServiceImpl implements RegisterService{
 	
 	
 	//save extra course
-	private void saveExtraCourses(Register register, List<Long> extraCourseIds, Promotion promotion) {
+	void saveExtraCourses(Register register, List<Long> extraCourseIds, Promotion promotion) {
         if (extraCourseIds != null && !extraCourseIds.isEmpty()) {
             int extraCoursesToAdd = promotion != null ? promotion.getExtraCourses() : extraCourseIds.size();
             for (int i = 0; i < Math.min(extraCoursesToAdd, extraCourseIds.size()); i++) {
@@ -150,13 +150,15 @@ public class RegisterServiceImpl implements RegisterService{
                 CourseRegisterDTO extraCourseDTO = new CourseRegisterDTO();
                 extraCourseDTO.setCourseId(extraCourseId);
                 RegisterDetail extraRegisterDetail = registerMapper.toRegisterDetail(extraCourseDTO, register);
-                registerDetailRepository.save(extraRegisterDetail);
+                if (extraRegisterDetail != null) { 
+                	registerDetailRepository.save(extraRegisterDetail);
+                }
             }
         }
     }
 
     // process Initial Payment
-	private void processInitialPayment(RegisterDTO registerDTO, BigDecimal totalTuitionFee, Register register) {		
+	void processInitialPayment(RegisterDTO registerDTO, BigDecimal totalTuitionFee, Register register) {		
         if (registerDTO.getInitialPayment() != null) {
             Payment initialPayment = new Payment();
             initialPayment.setRegister(register);
@@ -187,52 +189,57 @@ public class RegisterServiceImpl implements RegisterService{
 	}
 	
 	
-	private BigDecimal applyPromotion(BigDecimal totalTuitionFee, Promotion promotion, User user, List<Long> courseIds, List<Long> extraCourseIds) {
-	    switch (promotion.getPromotionType()) {
-	        case DISCOUNT_PERCENTAGE:
-	            if (promotion.getDiscountPercentage() != null) {
-	                return totalTuitionFee.multiply(BigDecimal.ONE.subtract(promotion.getDiscountPercentage().divide(BigDecimal.valueOf(100))));
-	            }
-	            
-	            break;
-	            
-	        case DISCOUNT_AMOUNT:
-	            if (promotion.getDiscountAmount() != null) {
-	                return totalTuitionFee.subtract(promotion.getDiscountAmount());
-	            }
-	            
-	            break;
-	            
-	        case PAY_ONLY_N_COURSES:
-	            if (promotion.getPayOnlyNumberCourses() != null && promotion.getPayOnlyNumberCourses() < courseIds.size()) {
-	                // Apply "Pay Only N Courses" promotion
-	                List<BigDecimal> courseFees = new ArrayList<>();
-	                for (Long courseId : courseIds) {
-	                    Course course = courseRepository.findById(courseId)
-	                            .orElseThrow(() -> new ResourceNotFoundException("Course", "id", courseId, HttpStatus.NOT_FOUND));
-	                    BigDecimal courseFee = user.getRole() == Role.STUDENT ? course.getTuitionFeeStudent() : course.getTuitionFeeEmployee();
-	                    courseFees.add(courseFee);
-	                }
-	                
-	                // Sort the fees in ascending order
-	                courseFees.sort(BigDecimal::compareTo);
-	                
-	                BigDecimal payableAmount = BigDecimal.ZERO;
-	                for (int i = 0; i < promotion.getPayOnlyNumberCourses(); i++) {
-	                    payableAmount = payableAmount.add(courseFees.get(i));
-	                }
-	                
-	                totalTuitionFee = payableAmount;
-	            }
-	            
-	            break;
-	            
-	        case EXTRA_COURSES:
-	            if (promotion.getNumberOfCourses() != null && promotion.getExtraCourses() != null) {
-	               
-	            }
-	            
-	            break;
+	BigDecimal applyPromotion(BigDecimal totalTuitionFee, Promotion promotion, User user, List<Long> courseIds, List<Long> extraCourseIds) {
+		try {
+		    switch (promotion.getPromotionType()) {
+		        case DISCOUNT_PERCENTAGE:
+		            if (promotion.getDiscountPercentage() != null) {
+		                return totalTuitionFee.multiply(BigDecimal.ONE.subtract(promotion.getDiscountPercentage().divide(BigDecimal.valueOf(100))));
+		            }
+		            
+		            break;
+		            
+		        case DISCOUNT_AMOUNT:
+		            if (promotion.getDiscountAmount() != null) {
+		                return totalTuitionFee.subtract(promotion.getDiscountAmount());
+		            }
+		            
+		            break;
+		            
+		        case PAY_ONLY_N_COURSES:
+		            if (promotion.getPayOnlyNumberCourses() != null && promotion.getPayOnlyNumberCourses() < courseIds.size()) {
+		                // Apply "Pay Only N Courses" promotion
+		                List<BigDecimal> courseFees = new ArrayList<>();
+		                for (Long courseId : courseIds) {
+		                    Course course = courseRepository.findById(courseId)
+		                            .orElseThrow(() -> new ResourceNotFoundException("Course", "id", courseId, HttpStatus.NOT_FOUND));
+		                    BigDecimal courseFee = user.getRole() == Role.STUDENT ? course.getTuitionFeeStudent() : course.getTuitionFeeEmployee();
+		                    courseFees.add(courseFee);
+		                }
+		                
+		                // Sort the fees in ascending order
+		                courseFees.sort(BigDecimal::compareTo);
+		                
+		                BigDecimal payableAmount = BigDecimal.ZERO;
+		                for (int i = 0; i < promotion.getPayOnlyNumberCourses(); i++) {
+		                    payableAmount = payableAmount.add(courseFees.get(i));
+		                }
+		                
+		                totalTuitionFee = payableAmount;
+		            }
+		            
+		            break;
+		            
+		        case EXTRA_COURSES:
+		            if (promotion.getNumberOfCourses() != null && promotion.getExtraCourses() != null) {
+		               
+		            }
+		            
+		            break;
+		    }
+		} catch (NullPointerException e) {
+	        // Handle null pointer exception
+	        e.printStackTrace();
 	    }
 	    return totalTuitionFee;
 	    

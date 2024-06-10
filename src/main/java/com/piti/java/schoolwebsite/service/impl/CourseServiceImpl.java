@@ -43,17 +43,24 @@ public class CourseServiceImpl implements CourseService{
 				.orElseThrow(() -> new ResourceNotFoundException("Course", "id", id, HttpStatus.NOT_FOUND));
 	}
 
+	
 	@Override
 	public CourseDTO update(Long id, CourseDTO courseDTO) {
-		Course existingCourse = getById(id);
-		if (courseRepository.existsByName(courseDTO.getName()) && !existingCourse.getName().equals(courseDTO.getName())) {
-	         throw new ApiException(HttpStatus.BAD_REQUEST, "Course with this name already exists");
+	    Course existingCourse = getById(id);
+	    //System.out.println("Existing Course ID: " + existingCourse.getId());
+	    //System.out.println("Existing Course Name: " + existingCourse.getName());
+	    //System.out.println("New Course Name: " + courseDTO.getName());
+
+	    if (courseRepository.existsByName(courseDTO.getName()) && !existingCourse.getName().equals(courseDTO.getName())) {
+	        //System.out.println("Throwing ApiException for duplicate name");
+	        throw new ApiException(HttpStatus.BAD_REQUEST, "Course with this name already exists");
 	    }
-		
-		courseMapper.updateCourseFromDTO(courseDTO, existingCourse);
-		Course updatedCourse = courseRepository.save(existingCourse);
-		return courseMapper.toDTO(updatedCourse);
+
+	    courseMapper.updateCourseFromDTO(courseDTO, existingCourse);
+	    Course updatedCourse = courseRepository.save(existingCourse);
+	    return courseMapper.toDTO(updatedCourse);
 	}
+	
 
 	@Override
 	public void delete(Long id) {

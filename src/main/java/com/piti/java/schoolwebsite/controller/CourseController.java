@@ -58,7 +58,7 @@ public class CourseController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<?> getHotelsList(@RequestParam Map<String, String> params){
+	public ResponseEntity<?> getCoursesList(@RequestParam Map<String, String> params){
 		Page<CourseDTO> courses = courseService.getCourses(params);
 		//PageDTO pageDTO = new PageDTO(courses);
 		PageDTO pageDTO = pageMapper.toDTO(courses);

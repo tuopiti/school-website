@@ -24,7 +24,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RegisterDTO {
-	private Integer id;
+	private Long id;
 
 	@NotEmpty(message = "Course list cannot be empty")
 	@Valid
