@@ -1,0 +1,587 @@
+{
+	"info": {
+		"_postman_id": "b32c4e9a-57c7-429c-a3c6-716294203c95",
+		"name": "School Website",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22826674"
+	},
+	"item": [
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Database\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Category By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/category/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"category",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Database Design\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/category/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"category",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Course",
+			"item": [
+				{
+					"name": "Create Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Reactive Programming\",\r\n    \"description\": \"good\",\r\n    \"videoUrl\": \"https://www.youtube.com/watch?v=H1DeGweAJxo&list=PLgTdwF3gS2V0hzSg9H9mKjJu3Ve0TB64a\",\r\n    \"meetingSchedule\": \"Youtube Video\",\r\n    \"tuitionFeeStudent\": 400000,\r\n    \"tuitionFeeEmployee\": 600000,\r\n    \"categoryId\": 2,\r\n    \"discountEligible\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/course",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Course By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/course/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"course",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Java Basic\",\r\n    \"description\": \"good\",\r\n    \"videoUrl\": \"https://www.youtube.com/watch?v=H1DeGweAJxo&list=PLgTdwF3gS2V0hzSg9H9mKjJu3Ve0TB64a\",\r\n    \"meetingSchedule\": \"Youtube Video\",\r\n    \"tuitionFeeStudent\": 200000,\r\n    \"tuitionFeeEmployee\": 300000,\r\n    \"categoryId\": 1,\r\n    \"discountEligible\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/course/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"course",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Course By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/course/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"course",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Courses Pagination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/course?_page=1&_limit=4&_sort=id&_order=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"course"
+							],
+							"query": [
+								{
+									"key": "_page",
+									"value": "1"
+								},
+								{
+									"key": "_limit",
+									"value": "4"
+								},
+								{
+									"key": "_sort",
+									"value": "id"
+								},
+								{
+									"key": "_order",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Promotion",
+			"item": [
+				{
+					"name": "Create Promotion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Summer Sale\",\r\n  \"description\": \"Get amazing discounts on all courses this summer!\",\r\n  \"numberOfCourses\": 4,\r\n  \"discountPercentage\": null,\r\n  \"discountAmount\": null,\r\n  \"extraCourses\": null,\r\n  \"payOnlyNumberCourses\":2,\r\n  \"startDate\": \"2024-06-06\",\r\n  \"endDate\": \"2024-06-30\",\r\n  \"promotionType\": \"PAY_ONLY_N_COURSES\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/promotion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"promotion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Promotion By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/promotion/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"promotion",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Promotion",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Promotion",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/promotion/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"promotion",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Promotions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/promotion",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"promotion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"dara\",\r\n  \"email\": \"dara@gmail.com\",\r\n  \"password\": \"dara1234\",\r\n  \"role\": \"EMPLOYEE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/user/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Register",
+			"item": [
+				{
+					"name": "Register Course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courses\":[\r\n        {\r\n            \"courseId\": 1\r\n        },\r\n        {\r\n            \"courseId\": 2\r\n        },\r\n        {\r\n            \"courseId\": 3\r\n        },\r\n        {\r\n            \"courseId\": 5\r\n        }\r\n    ],\r\n    \"userId\": 2,\r\n    \"promotionType\": \"EXTRA_COURSES\",\r\n    \"initialPayment\": null,\r\n    \"paymentMethod\": \"PayPal\",\r\n    \"extraCourseIds\":[6,7]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get RegisterId With Payments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/register/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"register",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Register",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/register?_page=1&_limit=4&_sort=id&_order=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							],
+							"query": [
+								{
+									"key": "_page",
+									"value": "1"
+								},
+								{
+									"key": "_limit",
+									"value": "4"
+								},
+								{
+									"key": "_sort",
+									"value": "id"
+								},
+								{
+									"key": "_order",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Register By UserId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/register/user/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"register",
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "Save Payment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"registerId\": 1,\r\n    \"amount\": 100000,\r\n    \"paymentMethod\": \"PayPal\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/payment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

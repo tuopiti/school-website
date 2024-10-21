@@ -1,0 +1,203 @@
+School Website:
+
+សាលាមានបង្រៀនទាំង Programming, Database, Frameworks, Architecture, Algorithm Exercise,...
+Programming បច្ចុប្បន្នមាន Java​ Basic, Java Advance, ហើយ Framework មាន Spring Core, ...
+វគ្គខ្លះបង្រៀនតាមវីដេអូ វគ្គខ្លះ online។
+វីដេអូនៅ Youtube ត្រូវការ email ទើបមើលឃើញ។
+ចំពោះការរៀន online គឺ​ ថ្ងៃអាទិត្យម៉ោង៩ព្រឹកដល់១២ថ្ងៃត្រង់ ឬថ្ងៃព្រហស្បតិ៍ម៉ោង៨ដល់១០យប់ ...
+តម្លៃសិក្សា ចំពោះនិស្សិតគឺទាបជាងចំពោះបុគ្គលិកក្រុមហ៊ុន។
+គ្រូមាន Promotion ជាច្រើន តាមពេលវេលាកំណត់ជាក់លាក់ណាមួយ ដូចជា ៖
+រៀន ៣វគ្គបញ្ចុះតម្លៃ ៥០%​​ (សម្រាប់តែវគ្គមួយចំនួន) ចាប់ពីថ្ងៃទី ១មេសា ដល់ ២០មេសា ២០២៤
+រៀន៣វគ្គបង់ថ្លៃសិក្សាតែ២វគ្គ (សម្រាប់តែវគ្គមួយចំនួន) ចាប់ពីថ្ងៃទី ១មេសា ដល់ ២០មេសា ២០២៤
+រៀន៣វគ្គ ៥០ ម៉ឺនរៀល(សម្រាប់តែវគ្គមួយចំនួន) ចាប់ពីថ្ងៃទី ១មេសា ដល់ ២០មេសា ២០២៤
+រៀន២វគ្គថែម១វគ្គ រៀន៣វគ្គថែម២វគ្គ ចាប់ពីថ្ងៃទី ១មេសា ដល់ ២០មេសា ២០២៤
+សិស្សអាចបង់ផ្តាច់ ឬបង់ជាដំណាក់កាល
+
+
+ពេលសិស្សចូលមើល Website៖
+-អាចមើលឃើញវគ្គសិក្សាផ្សេងៗ
+-ពេល User ចុចមើលលើវគ្គណាមួយ វានឹងបង្ហាញមាតិការនៃវគ្គនោះ
+-មើល Promotion ផ្សេងៗ
+
+-------------------------------------
+* Backend Task:
+-CRUD for Category, Course, Promotion
+-Register (can register multiple courses)
+-Register with promotion
+-Payment
+
+* Criteria:
+-Logic Accuracy
+-Exception handling
+-Unit Test with code coverage 90% up
+-----------------------
+* Duration : 1 month (From 5th May to 5th June)
+--------------------------
+* Technology: 
+-Java 17 up
+-Spring  Boot 3
+-Maven
+-Lombok
+-Mapstruct
+
+
++ ទី​​​​​ ១
+​​​     -  Create Category 
+         	http://localhost:8080/api/v1/category
+         	{
+    	      "name": "Database"
+         	}
+      -  get Category By Id,  update Category,  get All Category
+
++ ទី​​​​​ ២
+​​​     -   Create  Course
+              http://localhost:8080/api/v1/course
+              {
+   	  "name": "Reactive Programming",
+    	   "description": "good",
+                   "videoUrl": "https://www.youtube.com/watch?v=H1DeGweAJxo&list=PLgTdwF3gS2V0hzSg9H9mKjJu3Ve0TB64a",
+                   "meetingSchedule": "Youtube Video",
+                                                                       //តម្លៃសិក្សា ចំពោះនិស្សិតគឺទាបជាងចំពោះបុគ្គលិកក្រុមហ៊ុន។
+                   "tuitionFeeStudent": 400000,     //ថ្លៃសិក្សាសិស្ស
+                   "tuitionFeeEmployee": 600000,  //ថ្លៃសិក្សា បុគ្គលិក
+                   "categoryId": 2,                            //  Id របស់​​ category
+                   "discountEligible": true​​​​​​​​​​​​                //    Promotion (សម្រាប់តែវគ្គមួយចំនួន)    true =  isPromotion course,  false = no promotion
+             }
+
+        -   Get Course By Id
+        -   Update Course
+        -   Delete Course By Id
+        -   Get Courses Pagination
+             http://localhost:8080/api/v1/course?_page=1&_limit=4&_sort=id&_order=desc
+
++ ទី​​​​​ ៣
+
+​​​        -   Create Promotion
+               http://localhost:8080/api/v1/promotion
+                 {
+ 		 "name": "Summer Sale",
+  		"description": "Get amazing discounts on all courses this summer!",
+ 		 "numberOfCourses": 4,      //  ចំនួន​ courses ដែល register ដើម្បី​បាន​ promotion ​មួយហ្នឹង
+ 		 "discountPercentage": null,
+ 		 "discountAmount": null,
+ 		 "extraCourses": null,
+ 		 "payOnlyNumberCourses":2,
+ 		 "startDate": "2024-06-06",   //  @FutureOrPresent(message = "Start date must be in the present or future")
+ 		 "endDate": "2024-06-30",    //@Future(message = "End date must be in the future")
+                                                                              //@EndDateAfterStartDate(message = "End date must be after start date")	
+		"promotionType": "PAY_ONLY_N_COURSES"
+	}
+
+                public enum PromotionType {
+	          DISCOUNT_PERCENTAGE,	
+                          DISCOUNT_AMOUNT,
+                          EXTRA_COURSES,  
+                          PAY_ONLY_N_COURSES
+                }
+               I  have separate promotion as type because of  ប្រធាន
+​​​​​​​​​               គ្រូមាន Promotion ជាច្រើន តាមពេលវេលាកំណត់ជាក់លាក់ណាមួយ ដូចជា ៖
+​	រៀន ៣វគ្គបញ្ចុះតម្លៃ ៥០%   (សម្រាប់តែវគ្គមួយចំនួន) ចាប់ពីថ្ងៃទី ១មេសា ដល់ ២០មេសា ២០២៤   //  DISCOUNT_PERCENTAGE
+	រៀន៣វគ្គបង់ថ្លៃសិក្សាតែ២វគ្គ (សម្រាប់តែវគ្គមួយចំនួន) ចាប់ពីថ្ងៃទី ១មេសា ដល់ ២០មេសា ២០២៤   //    PAY_ONLY_N_COURSES
+	រៀន៣វគ្គ ៥០ ម៉ឺនរៀល(សម្រាប់តែវគ្គមួយចំនួន) ចាប់ពីថ្ងៃទី ១មេសា ដល់ ២០មេសា ២០២៤           // DISCOUNT_AMOUNT
+	រៀន២វគ្គថែម១វគ្គ រៀន៣វគ្គថែម២វគ្គ ចាប់ពីថ្ងៃទី ១មេសា ដល់ ២០មេសា ២០២៤  ។                      //  EXTRA_COURSES
+​​​​​​​               so for users who register courses, they can choose promotion that they want by them self.
+               if  "promotionType": "DISCOUNT_PERCENTAGE"
+                     "discountPercentage": 50,  and  discountAmount, extraCourses,  payOnlyNumberCourses  can be null.
+               if  "promotionType": "DISCOUNT_AMOUNT"
+                    "discountAmount": 500000,  and  discountPercentage, extraCourses,  payOnlyNumberCourses  can be null.
+               if  "promotionType": "EXTRA_COURSES"
+                    "extraCourses": 2,   and  discountPercentage, discountAmount,  payOnlyNumberCourses  can be null.
+               if  "promotionType": "PAY_ONLY_N_COURSES"
+                    "payOnlyNumberCourses":2,  and  discountPercentage, discountAmount,  extraCourses  can be null.
+
+        -  Get Promotion By Id,  Update Promotion,  Delete Promotion,  List Promotion
+
+
++ ទី​​​​​ ៤
+
+        -  Create User
+            http://localhost:8080/api/v1/user
+         	      {
+  		"name": "dara",
+ 		 "email": "dara@gmail.com",
+ 		 "password": "dara1234",
+ 		 "role": "EMPLOYEE"    //  EMPLOYEE  or  STUDENT
+	     }
+
+​​​​
++ ទី​​​​​ ៥
+​​​​       
+        -     Register Course
+
+	http://localhost:8080/api/v1/register
+               {
+   		 "courses":[
+       			 {
+            				"courseId": 1
+       			 },
+       			 {
+            				"courseId": 2
+       			 },
+       			 {
+           				 "courseId": 3
+        			},
+       			 {
+           				 "courseId": 5
+      			  }
+   		 ],
+    		"userId": 2,
+   		 "promotionType": "PAY_ONLY_N_COURSES",
+     		"initialPayment": 600000,    //  ការទូទាត់ដំបូង
+   		 "paymentMethod": "PayPal"
+	}
+ 
+                *This API  save into 3 tables  registers,  register_detail  and also payment  if  (initialPayment  != null)
+                * if the register fit with promotionId . it will setPromotionId  else  promotionId = null   ( No promotion )
+                * if  (initialPayment  >=  totalTuitionFee)     payment_status =  paid  else   partially_paid
+
+               * if  "promotionType": "EXTRA_COURSES"
+
+                 {
+   		 "courses":[
+       			 {
+           				 "courseId": 1
+       			 },
+       			 {
+           				 "courseId": 2
+        			},
+       			 {
+            				"courseId": 3
+        			},
+       			 {	
+				"courseId": 5
+       			 }
+   		 ],
+   		 "userId": 2,
+   		 "promotionType": "EXTRA_COURSES",
+   		 "initialPayment": null,
+   		 "paymentMethod": "PayPal",
+  		  "extraCourseIds":[6,7]
+	}
+     
+         -    Get RegisterId With Payments
+                     http://localhost:8080/api/v1/register/4
+         -    List Register
+                     http://localhost:8080/api/v1/register?_page=1&_limit=4&_sort=id&_order=desc
+         -     List Register By UserId
+                     http://localhost:8080/api/v1/register/user/2
+
+
++ ទី​​​​​ ៦
+
+​​​​​​​​            -  Payment for course  API
+                   http://localhost:8080/api/v1/payment
+                    {
+    		"registerId": 1,     //  id  របស់​  register course
+   		 "amount": 100000,
+    		"paymentMethod": "PayPal"
+	    }
+
+                  * if payment is  enough  =>  table (payments)  field  is_full_payment = true  else  false
+                   * if  is_full_payment = true  => table (registers)  field  payment_status = PAID  else  PARTIALLY_PAID
+               
+               
